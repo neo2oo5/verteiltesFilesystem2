@@ -57,20 +57,38 @@ public class CrudPostList extends PostList {
 	
 	public int getCount()
 	{
-		return this.PostArray.size();
+		return getCount();
 	}
 	
-	public void create(Post el)
+	public void create(int id, int gid, int lastModified, String inhalt,
+    		String author, String modifiedBy, String createTime, String title)
 	{
-		PostArray.add(el);
+		add(new Post(id, gid, lastModified, inhalt, author, modifiedBy, createTime, title));
 	}
 	
-	public void read()
+	public void add(Post e)
 	{
-		
+		add(e);
 	}
 	
-	public void update()
+	public void read(int id)
+	{
+		read(id, "id");
+	}
+	
+	public void read(int id, String specifier)
+	{
+		if(specifier == "id")
+		{
+			searchById(id);
+		}
+		else if(specifier == "gid")
+		{
+			searchByGid(id);
+		}
+	}
+	
+	public void update(Post e)
 	{
 		
 	}
@@ -78,9 +96,21 @@ public class CrudPostList extends PostList {
 	/**
 	 * 
 	 */
-	public void delete()
+	public void delete(int id)
 	{
-		
+		delete(id , "id");
+	}
+	
+	public void delete(int id, String specifier)
+	{
+		if(specifier == "id")
+		{
+			removeById(id);
+		}
+		else if(specifier == "gid")
+		{
+			removeByGid(id);
+		}
 	}
 	
 }
