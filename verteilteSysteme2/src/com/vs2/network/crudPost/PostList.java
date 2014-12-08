@@ -11,7 +11,7 @@ import java.util.ArrayList;
  */
 abstract class PostList {
 	
-	ArrayList<Post> PostArray = new ArrayList<Post>();
+	private ArrayList<Post> PostArray = new ArrayList<Post>();
 
 	/**
 	 * @param id
@@ -64,12 +64,22 @@ abstract class PostList {
 		PostArray.remove(this.searchById(id));
 	}
 	
+	protected void removeByGid(int id)
+	{
+		PostArray.remove(this.searchByGid(id));
+	}
+	
 	/**
 	 * @return
 	 */
 	protected Post getElement(int index)
 	{
 		return	PostArray.get(index);
+	}
+	
+	protected int getCount()
+	{
+		return PostArray.size();
 	}
 
 	
