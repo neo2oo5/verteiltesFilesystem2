@@ -3,32 +3,41 @@
  */
 package com.vs2.network.crudPost;
 
+import java.sql.*;
 import java.util.ArrayList;
+import java.util.Calendar;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author golli
+ * The Class CrudPostList.
  *
+ * @author golli
  */
 /**
  * @author xoxoxo
  * wird fuer Webservices gebraucht
  */
 
+/**
+ * @author xoxoxo
+ *
+ */
 public class CrudPostList extends PostList {
 	
 	
 	/**
-     * Funktion welche die einigartige Instanz generiert
-     */
+	 * Funktion welche die einigartige Instanz generiert.
+	 */
     private static class CrudPostListHolder
     {
 
+        /** The instance. */
         private static CrudPostList INSTANCE = new CrudPostList();
     }
 
     /**
      * Lazy Loading mit unsynchronisierter getinstance()-Methode aber mit
-     * synchronisierter Instanzierung und doppeltem Null-Check
+     * synchronisierter Instanzierung und doppeltem Null-Check.
      *
      * @return CrudPostList Instanz zurueck
      */
@@ -46,36 +55,64 @@ public class CrudPostList extends PostList {
         }
         return CrudPostListHolder.INSTANCE;
     }
+    
     /**
-     * 
-     * @return
+     * Gets the post list.
+     *
+     * @return the post list
      */
 	public ArrayList<Post> getPostList()
 	{
-		return this.PostArray;
+		return this.getAllElements();
 	}
-	
-	public int getCount()
+    
+    /**
+     * Gets the post list.
+     *
+     * @param gid the gid
+     * @return the post list
+     */
+	public ArrayList<Post> getPostList(int gid)
 	{
-		return getCount();
+		return this.getElementByGroup(gid);
 	}
 	
-	public void create(int id, int gid, int lastModified, String inhalt,
-    		String author, String modifiedBy, String createTime, String title)
+	/**
+	 * Creates the.
+	 *
+	 * @param id the id
+	 * @param gid the gid
+	 * @param lastModified the last modified
+	 * @param inhalt the inhalt
+	 * @param author the author
+	 * @param modifiedBy the modified by
+	 * @param createTime the create time
+	 * @param title the title
+	 */
+	public void create(int id, int gid, String inhalt,
+    		String author, String title)
 	{
-		add(new Post(id, gid, lastModified, inhalt, author, modifiedBy, createTime, title));
+		add(new Post(id, gid, 0, inhalt, author, "NOBODY", getTimestamp(), title));
 	}
 	
-	public void add(Post e)
-	{
-		add(e);
-	}
 	
+	
+	/**
+	 * Read.
+	 *
+	 * @param id the id
+	 */
 	public void read(int id)
 	{
 		read(id, "id");
 	}
 	
+	/**
+	 * Read.
+	 *
+	 * @param id the id
+	 * @param specifier the specifier
+	 */
 	public void read(int id, String specifier)
 	{
 		if(specifier == "id")
@@ -87,20 +124,23 @@ public class CrudPostList extends PostList {
 			searchByGid(id);
 		}
 	}
-	
-	public void update(Post e)
-	{
-		
-	}
-	
+
 	/**
-	 * 
+	 * Delete.
+	 *
+	 * @param id the id
 	 */
 	public void delete(int id)
 	{
 		delete(id , "id");
 	}
 	
+	/**
+	 * Delete.
+	 *
+	 * @param id the id
+	 * @param specifier the specifier
+	 */
 	public void delete(int id, String specifier)
 	{
 		if(specifier == "id")
@@ -111,6 +151,13 @@ public class CrudPostList extends PostList {
 		{
 			removeByGid(id);
 		}
+	}
+	
+	private long getTimestamp()
+	{
+		Calendar calendar = Calendar.getInstance();
+		Timestamp currentTimestamp = new Timestamp(calendar.getTime().getTime());
+		return currentTimestamp.getTime();
 	}
 	
 }

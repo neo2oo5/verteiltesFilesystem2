@@ -7,11 +7,11 @@ public class Post {
     //-----------------------Instanz Variabeln----------------------
 	private int		id;					//user  identifier
 	private int  	gid;				//group identifier
-	private int 	lastModified;		//timestamp
+	private long 	lastModified;		//timestamp
 	private String 	inhalt;				
 	private String 	author;				
 	private String 	modifiedBy;	
-	private String 	createTime;			//Erstelldatum timestamp
+	private long 	createTime;			//Erstelldatum timestamp
 	private String  title;
 	//--------------------------------------------------------------
 	
@@ -27,8 +27,8 @@ public class Post {
      * @param  createTime
      * @param  title            
      */
-    public Post(int id, int gid, int lastModified, String inhalt,
-    		String author, String modifiedBy, String createTime, String title) 
+    public Post(int id, int gid, long lastModified, String inhalt,
+    		String author, String modifiedBy, long createTime, String title) 
     { 
         //--------initialisiere Instanz Variabeln Argumenten--------       
         this.id 			= id;  
@@ -65,7 +65,7 @@ public class Post {
      * 
      * @return  
      */
-	public int getLastModified() {
+	public long getLastModified() {
 		return lastModified;
 	}
 	
@@ -131,7 +131,7 @@ public class Post {
      * 
      * @return  
      */
-	public String getCreateTime() {
+	public long getCreateTime() {
 		return createTime;
 	}
 	

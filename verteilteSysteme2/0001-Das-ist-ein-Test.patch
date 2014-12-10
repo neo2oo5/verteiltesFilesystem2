@@ -1,0 +1,24 @@
+From 40e21d31ac34f4e8cca709da461648a47dbe8882 Mon Sep 17 00:00:00 2001
+From: Alexander Mohr <kellox1@gmx.de>
+Date: Tue, 9 Dec 2014 22:53:43 +0100
+Subject: [PATCH 1/5] Das ist ein Test
+
+---
+ verteilteSysteme2/src/com/vs2/network/crudPostWebservice/Test.java | 5 +++++
+ 1 file changed, 5 insertions(+)
+ create mode 100644 verteilteSysteme2/src/com/vs2/network/crudPostWebservice/Test.java
+
+diff --git a/verteilteSysteme2/src/com/vs2/network/crudPostWebservice/Test.java b/verteilteSysteme2/src/com/vs2/network/crudPostWebservice/Test.java
+new file mode 100644
+index 0000000..1177338
+--- /dev/null
++++ b/verteilteSysteme2/src/com/vs2/network/crudPostWebservice/Test.java
+@@ -0,0 +1,5 @@
++package com.vs2.network.crudPostWebservice;
++
++public class Test {
++
++}
+-- 
+1.9.1
+
