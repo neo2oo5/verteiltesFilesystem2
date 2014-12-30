@@ -1,0 +1,1 @@
+<div style='color:#00ff00'>INFORMATION: Programm gestartet</div>
